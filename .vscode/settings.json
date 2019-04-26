@@ -1,0 +1,14 @@
+{
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
+  },
+  "[stylus]": {
+    "editor.formatOnSave": true
+  },
+  "eslint.autoFixOnSave": true,
+  "prettier.eslintIntegration": true,
+  "stylusSupremacy.insertBraces": false,
+  "stylusSupremacy.insertSemicolons": false,
+  "javascript.format.enable": false
+}

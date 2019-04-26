@@ -1,0 +1,48 @@
+// 第一引数で基準となる画面幅のフォントサイズ、第二引数で基準となる画面幅を入力
+get_vw($size, $viewport = 375)
+  $rate = 100 / $viewport
+  return $rate * $size * 1vw
+
+// font-size vw
+fz_vw($font_size = 10)
+  font-size: $font_size * 1px
+  font-size: get_vw($font_size)
+
+
+// breakpoint
+breakpoint(targets)
+  $conditions = ()
+  for target in targets
+    push($conditions, $media-queries[target])
+  $condition = join(", ", $conditions)
+  @media $condition
+    {block}
+
+
+// sprite
+sprite-width($sprite, $scale = 1)
+  width: nth($sprite, 3) * $scale
+
+sprite-height($sprite, $scale = 1)
+  height: nth($sprite, 4) * $scale
+
+sprite-position($sprite, $scale = 1)
+  $sprite-offset-x = nth($sprite, 5) * $scale
+  $sprite-offset-y = nth($sprite, 6) * $scale
+  background-position: $sprite-offset-x $sprite-offset-y
+
+sprite-image($sprite)
+  $sprite-image = nth($sprite, 9)
+  background-image: url($sprite-image)
+  background-repeat: no-repeat
+
+sprite-size($sprite, $scale = 1)
+  background-size: nth($sprite, 7) * $scale nth($sprite, 8)*$scale
+
+sprite($sprite, $scale = 1)
+  display: inline-block
+  sprite-image($sprite)
+  sprite-position($sprite, $scale)
+  sprite-width($sprite, $scale)
+  sprite-height($sprite, $scale)
+  sprite-size($sprite, $scale)

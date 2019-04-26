@@ -1,0 +1,75 @@
+block valiable
+  //- META
+  - var title = 'PAGE TITLE';
+  - var desc = '';
+  - var keywords = '';
+
+  //- OG
+  - var metaTitle = title;
+  - var metaDesc = desc;
+  - var metaURL = 'http://sample.com';
+  - var metaImage = 'image/ogp.png';
+
+  //- SNS
+  - var shareText = '';
+  - var twURL = '';
+  - var fbURL = '';
+  - var lineURL = '';
+
+  //- PATH
+  - var path = './assets';
+  - var imgPath = './assets/images';
+  - var data = '';
+
+doctype html
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#"><![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#"><![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" prefix="og: http://ogp.me/ns#"><![endif]-->
+<!--[if gt IE 8]><!-->
+html(class="no-js" prefix="og: http://ogp.me/ns#") <!--<![endif]-->
+  head
+    meta(charset="UTF-8")
+    title #{title}
+
+    block meta
+      meta(name="description" content=`${desc}`)
+      meta(name="keywords" content=`${keywords}`)
+      meta(name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0")
+      meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+      //- Facebook OGP
+      meta(property="og:locale" content="ja_JP")
+      meta(property="og:admins" content="")
+      meta(property="og:title" content=`${metaTitle}`)
+      meta(property="og:description" content=`${metaDescription}`)
+      meta(property="og:url" content="")
+      meta(property="og:site_name" content="")
+      meta(property="og:type" content="website")
+      meta(property="og:image" content=`${metaImage}`)
+
+      //- Twitter Card
+      meta(name="twitter:card", content="summary_large_image")
+      meta(name="twitter:title", content=`${metaTitle}`)
+      meta(name="twitter:description", content=`${metaDescription}`)
+      meta(name="twitter:image:src", content=`${metaImage}`)
+
+      link(rel="shortcut icon" href=`${imgPath}/favicon.ico`)
+      link(rel="apple-touch-icon-precomposed" href=`${imgPath}/apple-touch-icon.png`)
+
+    block style
+      link(rel="stylesheet" href=`${path}/css/style.css`)
+
+    block script-head
+      script.
+        document.documentElement.className = document.documentElement.className.replace("no-js","js");
+  body
+    block body
+      h1 Heading Lv1
+
+      block contents
+
+    block script-body
+      script(src=`${path}/js/app.js`)
