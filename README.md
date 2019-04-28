@@ -17,3 +17,20 @@
     yarn serve  // localhost立ち上げ
 
 ## Other
+
+以下の2つの機能も入れています。<br>
+(各設定ファイルはscripts/config/に置いてあります)
+
+- svgスプライト
+  
+  src/svg/iconsにsvgファイルを追加して以下のコマンドを実行すると、
+
+        yarn svgsprite
+
+  src/svg/svg-sprite.svg, src/view/parts/_svgs.pugのファイルが出力されるようになってます。
+
+- html整形
+  
+  以下のコマンドで、distディレクトリのhtmlを設定に応じて整形してくれます。
+
+        yarn htmlbeauty
