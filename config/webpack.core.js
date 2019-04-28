@@ -64,6 +64,7 @@ const config = {
       },
       {
         test: /\.pug$/,
+        // loader: 'pug-loader'
         use: {
           loader: 'pug-loader',
           options: { pretty: true }

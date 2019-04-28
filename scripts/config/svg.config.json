@@ -1,0 +1,27 @@
+{
+  "dest": "./src",
+  "shape": {
+    "id": {
+      "separator": ""
+    },
+    "transform": [{
+      "svgo": {
+        "plugins": [
+          {"removeTitle": true},
+          {"removeUselessDefs": true},
+          {"removeAttrs": {"attrs": ["fill", "id", "class", "data-name"]}},
+          {"removeStyleElement": true},
+          {"convertPathData": true},
+          {"convertTransform": true}
+        ]
+      }
+    }]
+  },
+  "mode": {
+    "symbol": {
+      "dest": "svg",
+      "sprite": "svg-sprite.svg",
+      "inline": true
+    }
+  }
+}
