@@ -8,13 +8,13 @@
 
 ## Get Start
     yarn install
-    yarn start
+    yarn dev
 
 ## Commands
-    yarn start  // developビルド, localhost立ち上げ
+    yarn dev  // localhost立ち上げ
     yarn build:dev  // developビルド
     yarn build  // productionビルド
-    yarn serve  // localhost立ち上げ
+    yarn production  // productionビルド && html整形
 
 ## Other
 
