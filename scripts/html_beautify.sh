@@ -10,7 +10,7 @@ dirs=(\
 function main() {
   for dir in ${dirs[@]}
   do
-    for entry in "$dir"*.html
+    for entry in "$dir"**/*.html
     do
       $exe "$entry" -r --config $CONFIG_FILE
     done

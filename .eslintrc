@@ -32,7 +32,7 @@
       }
     ],
     "comma-dangle": [1, "never"],
-    "no-console": 1,
+    "no-console": 0,
     "eol-last": 0,
     "block-scoped-var": 0,
     "complexity": 1,

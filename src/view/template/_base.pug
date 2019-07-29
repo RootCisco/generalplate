@@ -1,4 +1,5 @@
 block valiable
+  - var env = (NODE_ENV !== undefined) ? true : false;
   //- META
   - var title = 'PAGE TITLE';
   - var desc = '';
@@ -9,16 +10,12 @@ block valiable
   - var metaDesc = desc;
   - var metaURL = 'http://sample.com';
   - var metaImage = 'image/ogp.png';
-
-  //- SNS
-  - var shareText = '';
-  - var twURL = '';
-  - var fbURL = '';
-  - var lineURL = '';
+  - var metaSiteName = 'SiteName';
 
   //- PATH
   - var path = './assets';
   - var imgPath = './assets/images';
+  //- - locals.imgPath = '../assets/images';
   - var data = '';
 
 doctype html
@@ -34,27 +31,25 @@ html(class="no-js" prefix="og: http://ogp.me/ns#") <!--<![endif]-->
     meta(charset="UTF-8")
     title #{title}
 
+    - if(!env)
+      meta(name="robots" content="noindex")
+
     block meta
       meta(name="description" content=`${desc}`)
       meta(name="keywords" content=`${keywords}`)
       meta(name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0")
       meta(http-equiv="X-UA-Compatible" content="IE=edge")
 
-      //- Facebook OGP
+      //- OGP
       meta(property="og:locale" content="ja_JP")
-      meta(property="og:admins" content="")
       meta(property="og:title" content=`${metaTitle}`)
-      meta(property="og:description" content=`${metaDescription}`)
-      meta(property="og:url" content="")
-      meta(property="og:site_name" content="")
-      meta(property="og:type" content="website")
+      meta(property="og:description" content=`${metaDesc}`)
+      meta(property="og:type" content="article")
+      meta(property="og:url" content=`${metaURL}`)
       meta(property="og:image" content=`${metaImage}`)
-
-      //- Twitter Card
+      meta(property="og:image:secure_url" content=`${metaImage}`)
+      meta(property="og:site_name" content=`${metaSiteName}`)
       meta(name="twitter:card", content="summary_large_image")
-      meta(name="twitter:title", content=`${metaTitle}`)
-      meta(name="twitter:description", content=`${metaDescription}`)
-      meta(name="twitter:image:src", content=`${metaImage}`)
 
       link(rel="shortcut icon" href=`${imgPath}/favicon.ico`)
       link(rel="apple-touch-icon-precomposed" href=`${imgPath}/apple-touch-icon.png`)
@@ -65,11 +60,15 @@ html(class="no-js" prefix="og: http://ogp.me/ns#") <!--<![endif]-->
     block script-head
       script.
         document.documentElement.className = document.documentElement.className.replace("no-js","js");
+
   body
     block body
+      //- #preload-svg
+      //-     include ../parts/_svgs
+          
       h1 Heading Lv1
 
       block contents
 
     block script-body
-      script(src=`${path}/js/app.js`)
+      script(src=`${path}/js/app.js` defer)

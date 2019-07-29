@@ -6,6 +6,15 @@
 <p>特に何も指定しないときの状態</p>
 ```
 */
+html
+  -ms-overflow-style: none
+
+  &::-webkit-scrollbar
+    display: none
+    -webkit-appearance: none
+
+  -webkit-overflow-scrolling: touch
+
 body
   -webkit-text-size-adjust: 100%
   text-size-adjust: 100%
@@ -17,9 +26,20 @@ body
   font-family: $base-font-family
   color: $base-font-color
   background-color: $base-background-color
+  position: relative
+  overflow: hidden
+
+h1, h2, h3, p, a, em
+  font-feature-settings: 'palt'
+  font-display: swap
+
+  // IE ぼやけ対応
+  _:-ms-lang(x)
+    transform: rotate(0.001deg)
 
 a
   color: $base-font-color
+  text-decoration: none
 
 em
   font-style: normal
@@ -35,3 +55,4 @@ img
 
 svg
   fill: currentColor
+  backface-visibility: hidden

@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const entries = require('webpack-entries')
 
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -55,7 +55,7 @@ const config = {
                 {
                   modules: false,
                   useBuiltIns: 'usage',
-                  corejs: 3
+                  corejs: 2
                 }
               ]
             ]
@@ -64,11 +64,7 @@ const config = {
       },
       {
         test: /\.pug$/,
-        // loader: 'pug-loader'
-        use: {
-          loader: 'pug-loader',
-          options: { pretty: true }
-        }
+        loader: 'pug-loader'
       },
       {
         test: /\.styl(us)?$/,
@@ -110,6 +106,9 @@ const config = {
       title: 'Webpack Build',
       suppressSuccess: true
     }),
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         eslint: {
@@ -121,7 +120,7 @@ const config = {
     new CopyWebpackPlugin(
       [
         {
-          from: './+(images|video|fonts)/**/*',
+          from: './+(images|audio|video|fonts)/**/*',
           to: 'assets/'
         }
       ],
@@ -133,16 +132,6 @@ const config = {
   ],
   performance: {
     hints: false
-  },
-  watchOptions: {
-    ignored: /node_modules/
-  },
-  devServer: {
-    contentBase: path.join(__dirname, '/../dist'),
-    port: 3000,
-    open: true,
-    openPage: 'index.html',
-    watchContentBase: true
   }
 }
 
