@@ -4,8 +4,6 @@
 - packageマネージャーはYarnを使用しています。
 - html, css, js すべてwebpackにてバンドルしています。(設定ファイルはconfigディレクトリ以下)
 
-<br>
-
 ## Get Start
     yarn install
     yarn dev
@@ -27,7 +25,7 @@
 
         yarn svgsprite
 
-  src/svg/svg-sprite.svg, src/view/parts/_svgs.pugのファイルが出力されるようになってます。
+  src/svg/svg-sprite.svg, src/view/parts/以下に_svgs.pugファイルが出力されるようになってます。
 
 - html整形
   
