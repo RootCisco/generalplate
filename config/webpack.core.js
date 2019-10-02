@@ -106,9 +106,6 @@ const config = {
       title: 'Webpack Build',
       suppressSuccess: true
     }),
-    new webpack.DefinePlugin({
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         eslint: {

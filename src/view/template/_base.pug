@@ -1,22 +1,26 @@
 block valiable
-  - var env = (NODE_ENV !== undefined) ? true : false;
-  //- META
-  - var title = 'PAGE TITLE';
-  - var desc = '';
-  - var keywords = '';
+  -
+    //- META
+    var title = 'PAGE TITLE';
+    var desc = '';
+    var keywords = '';
 
-  //- OG
-  - var metaTitle = title;
-  - var metaDesc = desc;
-  - var metaURL = 'http://sample.com';
-  - var metaImage = 'image/ogp.png';
-  - var metaSiteName = 'SiteName';
+    //- OG
+    var metaTitle = title;
+    var metaDesc = desc;
+    var metaURL = 'http://sample.com';
+    var metaImage = 'image/ogp.png';
+    var metaSiteName = 'SiteName';
 
-  //- PATH
-  - var path = './assets';
-  - var imgPath = './assets/images';
-  //- - locals.imgPath = '../assets/images';
-  - var data = '';
+    //- PATH
+    var path = './assets';
+    var imgPath = './assets/images';
+    
+    //- pass variables to include file
+    locals.sharedTable = {
+      imgPath: '../assets/images'
+      //- add variable
+    }
 
 doctype html
 <!--[if lt IE 7]>
@@ -30,9 +34,6 @@ html(class="no-js" prefix="og: http://ogp.me/ns#") <!--<![endif]-->
   head
     meta(charset="UTF-8")
     title #{title}
-
-    - if(!env)
-      meta(name="robots" content="noindex")
 
     block meta
       meta(name="description" content=`${desc}`)
