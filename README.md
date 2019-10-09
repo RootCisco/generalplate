@@ -1,5 +1,5 @@
 # generalplate (Webpack4 + Babel7)
-**Vuepress, Nuxtなどのフレームワークが使えない、もしくは使わないとき用のフロントエンドテンプレート**
+**Vuepress, Nuxtなどのフレームワークが使えない、もしくは使わないとき用の自前フロントエンドテンプレート**
 
 - packageマネージャーはYarnを使用しています。
 - html, css, js すべてwebpackにてバンドルしています。(設定ファイルはconfigディレクトリ以下)
@@ -18,6 +18,14 @@
 
 以下の2つの機能も入れています。<br>
 (各設定ファイルはscripts/config/に置いてあります)
+
+- cssスプライト
+
+  src/images/sprite以下にまとめたい画像を入れコマンド実行すると、
+
+        yarn imgsprite
+
+  src/images/sprite.png, src/style/base/_sprite.stylが出力されます。
 
 - svgスプライト
   
