@@ -1,3 +1,6 @@
+// cssスプライト使用するときコメントアウトを外す
+// @import '_sprite'
+
 // 第一引数で基準となる画面幅のフォントサイズ、第二引数で基準となる画面幅を入力
 get_vw($size, $viewport = 375)
   $rate = (100 / $viewport)
@@ -20,30 +23,43 @@ breakpoint(targets)
   @media $condition
     {block}
 
-// sprite
-sprite-width($sprite, $scale = 1)
-  width: nth($sprite, 3) * $scale
-
-sprite-height($sprite, $scale = 1)
-  height: nth($sprite, 4) * $scale
-
-sprite-position($sprite, $scale = 1)
-  $sprite-offset-x = nth($sprite, 5) * $scale
-  $sprite-offset-y = nth($sprite, 6) * $scale
-  background-position: $sprite-offset-x $sprite-offset-y
-
-sprite-image($sprite)
-  $sprite-image = nth($sprite, 9)
-  background-image: url($sprite-image)
+// スケール指定のスプライト画像
+sprite-scaled($sprite, $scale = 1)
+  $sprite_w = $sprite[4] * $scale
+  $sprite_h = $sprite[5] * $scale
+  $sprite_offset_x = $sprite[2] * $scale
+  $sprite_offset_y = $sprite[3] * $scale
+  $sprite_size_w = $sprite[6] * $scale
+  $sprite_size_h = $sprite[7] * $scale
+  // set
+  display: inline-block
+  width: $sprite_w
+  height: $sprite_h
+  background-image: url($sprite[8])
+  background-size: $sprite_size_w $sprite_size_h
+  background-position: $sprite_offset_x $sprite_offset_y
   background-repeat: no-repeat
 
-sprite-size($sprite, $scale = 1)
-  background-size: nth($sprite, 7) * $scale nth($sprite, 8) * $scale
+// レスポンシブ対応のスプライト画像
+sprite-responsive($sprite)
+  $sprite_w = $sprite[6]
+  $sprite_h = $sprite[7]
+  $image_w = $sprite[4]
+  $image_h = $sprite[5]
+  $offset_x = $sprite[0]
+  $offset_y = $sprite[1]
+  // hide text
+  white-space: nowrap
+  text-indent: 100%
+  overflow: hidden
+  font-size: 0
+  // css sprite with magnification
+  background-image: url($sprite[8])
+  background-size: ($sprite_w / $image_w * 100) %, ($sprite_h / $image_h * 100) %
+  background-position: ($offset_x / ($sprite_w - $image_w) * 100) %, ($offset_y / ($sprite_h - $image_h) * 100) %
 
-sprite($sprite, $scale = 1)
-  display: inline-block
-  sprite-image($sprite)
-  sprite-position($sprite, $scale)
-  sprite-width($sprite, $scale)
-  sprite-height($sprite, $scale)
-  sprite-size($sprite, $scale)
+  // image aspect ratio fixed
+  &:after
+    content: ''
+    display: block
+    padding-top: ($image_h / $image_w * 100) %
