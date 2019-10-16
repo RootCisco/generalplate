@@ -12,12 +12,12 @@
     yarn dev  // localhost立ち上げ
     yarn build:dev  // developビルド
     yarn build  // productionビルド
-    yarn production  // productionビルド && html整形
+    yarn production  // 納品用 (productionビルド + html整形)
 
 ## Other
 
-以下の2つの機能も入れています。<br>
-(各設定ファイルはscripts/config/に置いてあります)
+以下の機能も入れています。<br>
+(各設定ファイルなどはscripts/config/に置いてあります)
 
 - cssスプライト
 
