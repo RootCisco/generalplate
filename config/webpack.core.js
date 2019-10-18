@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const srcPath = path.join(__dirname, '/../src')
-const distPath = path.join(__dirname, '/../dist')
+const distPath = path.join(__dirname, '/../build')
 const eslintConfig = path.join(__dirname, '/../.eslintrc')
 const htmlEntries = entries(`${srcPath}/**/!(_*).pug`, true)
 
@@ -118,7 +118,8 @@ const config = {
       [
         {
           from: './+(images|audio|video|fonts)/**/*',
-          to: 'assets/'
+          to: 'assets/',
+          ignore: ['images/sprite/**/*']
         }
       ],
       { context: `${srcPath}` }
