@@ -1,42 +1,45 @@
 # generalplate (Webpack4 + Babel7)
-**Vuepress, Nuxtなどのフレームワークが使えない、もしくは使わないとき用の自前フロントエンドテンプレート**
 
-- packageマネージャーはYarnを使用しています。
-- html, css, js すべてwebpackにてバンドルしています。(設定ファイルはconfigディレクトリ以下)
+> Vuepress, Nuxt などのフレームワークが使えない、もしくは使わないとき用の自前フロントエンドテンプレート
+
+- package マネージャーは Yarn を使用しています。
+- html, css, js すべて webpack にてバンドルしています。(設定ファイルは config ディレクトリ以下)
 
 ## Get Start
+
     yarn install
     yarn dev
 
 ## Commands
+
     yarn dev  // localhost立ち上げ
     yarn build:dev  // developビルド
     yarn build  // productionビルド
     yarn production  // 納品用 (productionビルド + html整形)
 
-## Other
+## Note
 
-以下の機能も入れています。<br>
-(各設定ファイルなどはscripts/config/に置いてあります)
+以下のシェルスクリプトも入れています。<br>
+(各設定ファイルなどは scripts/config/に置いてあります)
 
-- cssスプライト
+- css スプライト
 
-  src/images/sprite以下にまとめたい画像を入れコマンド実行すると、
+  src/images/sprite 以下にまとめたい画像を入れコマンド実行すると、
 
         yarn imgsprite
 
-  src/images/sprite.png, src/style/base/_sprite.stylが出力されます。
+  src/images/sprite.png, src/style/base/\_sprite.styl が出力されます。
 
-- svgスプライト
-  
-  src/svg/iconsにsvgファイルを追加して以下のコマンドを実行すると、
+- svg スプライト
+
+  src/svg/icons に svg ファイルを追加して以下のコマンドを実行すると、
 
         yarn svgsprite
 
-  src/svg/svg-sprite.svg, src/view/parts/以下に_svgs.pugファイルが出力されるようになってます。
+  `src/svg/`フォルダに`svg-sprite.svg`が出力されます。
 
-- html整形
-  
-  以下のコマンドで、distディレクトリのhtmlを設定に応じて整形してくれます。
+- html 整形
+
+  以下のコマンドで、build ディレクトリの html を設定に応じて整形してくれます。
 
         yarn htmlbeauty
