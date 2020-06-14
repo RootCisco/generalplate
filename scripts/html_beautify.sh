@@ -4,7 +4,7 @@ CONFIG_FILE="scripts/config/.jsbeautifyrc"
 exe="node_modules/.bin/js-beautify"
 
 dirs=(\
-  "dist/" \
+  "build/" \
 )
 
 function main() {
