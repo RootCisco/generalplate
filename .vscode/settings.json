@@ -6,9 +6,13 @@
   "[stylus]": {
     "editor.formatOnSave": true
   },
-  "eslint.autoFixOnSave": true,
-  "prettier.eslintIntegration": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"],
+  "javascript.format.enable": false,
+  "prettier.disableLanguages": ["javascript"],
   "stylusSupremacy.insertBraces": false,
-  "stylusSupremacy.insertSemicolons": false,
-  "javascript.format.enable": false
+  "stylusSupremacy.insertSemicolons": false
 }
