@@ -15,7 +15,7 @@ block valiable
     //- PATH
     var path = './assets';
     var imgPath = './assets/images';
-    
+
     //- pass variables to include file
     locals.sharedTable = {
       imgPath: './assets/images'
@@ -65,8 +65,8 @@ html(class="no-js" prefix="og: http://ogp.me/ns#") <!--<![endif]-->
   body
     block body
       //- #preload-svg
-      //-     include ../parts/_svgs
-          
+      //-   include ../../svg/svg-sprite.svg
+
       h1 Heading Lv1
 
       block contents
