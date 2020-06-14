@@ -1,17 +1,17 @@
-const path = require('path')
-const webpack = require('webpack')
-const entries = require('webpack-entries')
+const path = require('path');
+const webpack = require('webpack');
+const entries = require('webpack-entries');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const srcPath = path.join(__dirname, '/../src')
-const distPath = path.join(__dirname, '/../build')
-const eslintConfig = path.join(__dirname, '/../.eslintrc')
-const htmlEntries = entries(`${srcPath}/**/!(_*).pug`, true)
+const srcPath = path.join(__dirname, '/../src');
+const distPath = path.join(__dirname, '/../build');
+const eslintConfig = path.join(__dirname, '/../.eslintrc');
+const htmlEntries = entries(`${srcPath}/**/!(_*).pug`, true);
 
 const config = {
   entry: entries(`${srcPath}/js/!(_*|*spec).js`, true),
@@ -23,12 +23,7 @@ const config = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.styl'],
-    modules: [
-      `${srcPath}/js`,
-      path.join(process.cwd(), 'node_modules'),
-      path.join(__dirname, '../node_modules'),
-      'node_modules'
-    ]
+    modules: [`${srcPath}/js`, path.join(process.cwd(), 'node_modules'), path.join(__dirname, '../node_modules'), 'node_modules']
   },
   resolveLoader: {
     modules: [path.join(process.cwd(), 'node_modules'), path.join(__dirname, '../node_modules'), 'node_modules']
@@ -114,16 +109,18 @@ const config = {
         }
       }
     }),
-    new CopyWebpackPlugin(
-      [
+    new CopyWebpackPlugin({
+      patterns: [
         {
           from: './+(images|audio|video|fonts)/**/*',
           to: 'assets/',
-          ignore: ['images/sprite/**/*']
+          context: `${srcPath}`,
+          globOptions: {
+            ignore: ['**/images/sprite/**/*']
+          }
         }
-      ],
-      { context: `${srcPath}` }
-    ),
+      ]
+    }),
     new MiniCssExtractPlugin({
       filename: 'assets/css/style.css'
     })
@@ -131,7 +128,7 @@ const config = {
   performance: {
     hints: false
   }
-}
+};
 
 /* ページ数だけhtmlを出力してもらうように */
 for (let key of Object.keys(htmlEntries)) {
@@ -141,7 +138,7 @@ for (let key of Object.keys(htmlEntries)) {
       filename: `${key}.html`,
       template: htmlEntries[key]
     })
-  )
+  );
 }
 
-module.exports = config
+module.exports = config;

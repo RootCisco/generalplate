@@ -1,10 +1,10 @@
-const path = require('path')
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const core = require('./webpack.core')
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const core = require('./webpack.core');
 
-const ip = require('ip')
-const address = ip.address()
+const ip = require('ip');
+const address = ip.address();
 
 module.exports = merge(core, {
   devtool: 'inline-source-map',
@@ -28,4 +28,4 @@ module.exports = merge(core, {
     clientLogLevel: 'error',
     watchContentBase: true
   }
-})
+});
