@@ -38,6 +38,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "prettier": "^2.0.5",
+    "progress-bar-webpack-plugin": "^2.1.0",
     "pug": "^3.0.0",
     "pug-loader": "^2.4.0",
     "spritesmith-cli": "^1.1.2",

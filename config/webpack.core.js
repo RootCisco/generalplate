@@ -4,9 +4,11 @@ const entries = require('webpack-entries');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 
 const srcPath = path.join(__dirname, '/../src');
 const distPath = path.join(__dirname, '/../build');
@@ -101,6 +103,10 @@ const config = {
       title: 'Webpack Build',
       suppressSuccess: true
     }),
+    new ProgressBarPlugin({
+      format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+      clear: false
+    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         eslint: {
@@ -125,6 +131,7 @@ const config = {
       filename: 'assets/css/style.css'
     })
   ],
+  stats: 'errors-only',
   performance: {
     hints: false
   }
