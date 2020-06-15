@@ -43,3 +43,7 @@
   以下のコマンドで、build ディレクトリの html を設定に応じて整形してくれます。
 
         yarn htmlbeauty
+
+## License
+
+[MIT License](https://github.com/RootCisco/vuepress-boilerplate/blob/master/LICENSE)
