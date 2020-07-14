@@ -4,7 +4,8 @@
     "editor.formatOnType": true
   },
   "[stylus]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
