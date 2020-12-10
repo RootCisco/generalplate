@@ -7,8 +7,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const chalk = require('chalk');
 
 const srcPath = path.join(__dirname, '/../src');
 const distPath = path.join(__dirname, '/../build');
@@ -20,8 +18,7 @@ const config = {
   output: {
     filename: 'assets/js/[name].js',
     path: `${distPath}`,
-    sourceMapFilename: 'maps/[name].map',
-    jsonpFunction: 'fr'
+    sourceMapFilename: 'maps/[name].map'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.styl'],
@@ -72,21 +69,21 @@ const config = {
             options: { url: false }
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer')({
-                  grid: true
-                })
-              ]
+              postcssOptions: {
+                plugins: [
+                  ["autoprefixer", { grid: true }],
+                ]
+              }
             }
           },
           {
             loader: 'stylus-loader',
             options: {
-              'include css': true,
-              preferPathResolver: 'webpack'
+              stylusOptions: {
+                includeCSS: false,
+              }
             }
           }
         ]
@@ -102,10 +99,6 @@ const config = {
     new WebpackBuildNotifierPlugin({
       title: 'Webpack Build',
       suppressSuccess: true
-    }),
-    new ProgressBarPlugin({
-      format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
-      clear: false
     }),
     new webpack.LoaderOptionsPlugin({
       options: {

@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const core = require('./webpack.core');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -29,5 +29,5 @@ module.exports = merge(core, {
       new OptimizeCSSAssetsPlugin()
     ]
   },
-  plugins: [new webpack.optimize.AggressiveMergingPlugin(), new webpack.optimize.OccurrenceOrderPlugin()]
+  plugins: [new webpack.optimize.AggressiveMergingPlugin()]
 });
