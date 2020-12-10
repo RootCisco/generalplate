@@ -69,12 +69,10 @@ const config = {
             options: { url: false }
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [
-                  ["autoprefixer", { grid: true }],
-                ]
+                plugins: [['autoprefixer', { grid: true }]]
               }
             }
           },
@@ -82,7 +80,7 @@ const config = {
             loader: 'stylus-loader',
             options: {
               stylusOptions: {
-                includeCSS: false,
+                includeCSS: false
               }
             }
           }
