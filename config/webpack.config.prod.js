@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const core = require('./webpack.core');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(core, {
@@ -26,7 +26,7 @@ module.exports = merge(core, {
           ie8: true
         }
       }),
-      new OptimizeCSSAssetsPlugin()
+      new CssMinimizerPlugin()
     ]
   },
   plugins: [new webpack.optimize.AggressiveMergingPlugin()]

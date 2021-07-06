@@ -44,7 +44,7 @@
     "no-self-compare": 1,
     "no-void": 2,
     "no-var": 2,
-    "camelcase": [1, { "properties": "always" }],
+    "camelcase": [0, { "properties": "always" }],
     "no-array-constructor": 1,
     "quotes": [0, "single"],
     "no-unused-vars": 1,

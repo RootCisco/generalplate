@@ -72,7 +72,7 @@ const config = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [['autoprefixer', { grid: true }]]
+                plugins: [['autoprefixer', { flexbox: 'no-2009', grid: 'autoplace' }]]
               }
             }
           },
