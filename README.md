@@ -1,4 +1,4 @@
-# generalplate (Webpack4 + Babel7)
+# generalplate (Webpack5 + Babel7)
 
 > Vuepress, Nuxt などのフレームワークが使えない、もしくは使わないとき用の自前フロントエンドテンプレート
 
